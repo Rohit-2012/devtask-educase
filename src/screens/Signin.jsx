@@ -6,14 +6,7 @@ import { Link } from "react-router-dom";
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isEmpty, setIsEmpty] = useState(true);
-
-  useEffect(() => {
-    if (email.length > 0 && password.length > 0) {
-      setIsEmpty(false);
-    }
-    return () => setIsEmpty(true);
-  }, [email, password]);
+  const isEmpty = email.length === 0 || password.length === 0;
 
   return (
     <section className="px-5 min-w-full min-h-[100vh] flex flex-col gap-3 justify-start pt-10">
@@ -54,12 +47,17 @@ const Signin = () => {
           }}
         />
         {isEmpty ? (
-          <Button variant="contained" color="secondary" size="large" disabled>
+          <Button variant="contained" color="secondary" sx={{padding: 1.5}} disabled>
             Login
           </Button>
         ) : (
-          <Button variant="contained" color="secondary" size="large">
-            <Link to='/profile'>Login</Link>
+          <Button
+            variant="contained"
+            sx={{padding: 1.5, backgroundColor: '#6C25FF'}}
+            component={Link}
+            to="/profile"
+          >
+            Login
           </Button>
         )}
       </form>

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
+import { Button } from "@mui/material"
 
 
 const CreateAccountBtn = ({path}) => {
   return (
-    <button className="min-w-80 py-3 rounded-md bg-[#6C25FF] text-white font-semibold cursor-pointer">
-      <Link to={`/${path}`}>Create Account</Link>
-    </button>
+    <Button variant="contained" sx={{padding: 1.5, backgroundColor: '#6C25FF'}} component={Link} to={`/${path}`}>
+      Create Account
+    </Button>
   )
 }
 
